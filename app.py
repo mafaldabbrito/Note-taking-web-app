@@ -2,7 +2,7 @@
 from flask import Flask, render_template , url_for, request, redirect        # import flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from flask_login import UserMixin, login_user, LoginManager, login_required, logout_user, current_user
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
@@ -10,12 +10,12 @@ from wtforms.validators import InputRequired, Length, ValidationError
 import os
 from flask_bcrypt import Bcrypt
 
-load_dotenv()
+#load_dotenv()
 
 app = Flask(__name__)             # create an app instance
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SECRET_KEY'] = 'os.getenvSECRET_KEY'
 
 
 db = SQLAlchemy(app)
