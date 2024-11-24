@@ -1,0 +1,21 @@
+{% extends 'base.html' %}  
+
+{% block head %}  
+<title>Notebook</title>
+{% endblock %}
+
+{% block body %}  
+   <div class="content">
+        <h1 style="text-align: center">Note: {{note.title}}</h1>
+        <h4 style="text-align: center"> {{note.date_created.date()}} </h4>
+        <p style="text-align: center">{{note.content}}</p>
+        <br>
+
+        <div style="text-align: center;">
+            <a href="/edit/{{note.id}}" style="margin: 0 10px;">Edit</a>
+            <a href="/delete/{{note.id}}" style="margin: 0 10px;">Delete</a>
+            <a href="/home" style="margin: 0 10px;">Back to the list</a>
+        </div>
+        <br>
+    </div>
+{% endblock %}

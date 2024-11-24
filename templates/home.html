@@ -1,0 +1,45 @@
+{% extends 'base.html' %}  
+
+{% block head %}  
+<title>Notebook</title>
+{% endblock %}
+
+{% block body %}  
+   <div class="content">
+        <h1 style="text-align: center">Notebook</h1>
+        
+        {% if notes|length < 1 %}
+        <h4 style="text-align: center"> There are no Notes. Create one below! </h4>
+        {% else %}
+        <table>
+            <tr>
+                <th>Note</th>
+                <th>Date Created</th>
+                <th>Actions</th>
+            </tr>
+            {% for note in notes %}
+                <tr>
+                    <td>{{ note.title }}</td>
+                    <td>{{ note.date_created.date() }}</td>
+                    <td>
+                        <a href="/view/{{note.id}}">View</a>
+                        <br>
+                        <a href="/delete/{{note.id}}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+        <br>
+        <form action="/home" method="POST">
+
+            <input type="text" name="title" id="title" placeholder="Title">
+            <input type="text" name="content" id="content" placeholder= "Note...">
+            <input type="submit" value="Add Note">
+        </form>
+
+        <br>
+        <a href="{{url_for('logout')}}"> Logout</a>
+    </div>
+    
+{% endblock %}
